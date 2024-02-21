@@ -17,6 +17,7 @@ extension CarbAction {
                                  maxCarbEntryQuantity: Double,
                                  maxCarbEntryPastTime: TimeInterval,
                                  maxCarbEntryFutureTime: TimeInterval,
+                                 absorptionData: [Int: Double]?,
                                  nowDate: Date = Date()) throws -> NewCarbEntry {
         
         let absorptionTime = absorptionTime ?? defaultAbsorptionTime
@@ -41,7 +42,7 @@ extension CarbAction {
         }
         
         let quantity = HKQuantity(unit: .gram(), doubleValue: amountInGrams)
-        return NewCarbEntry(quantity: quantity, startDate: startDate ?? nowDate, foodType: foodType, absorptionTime: absorptionTime)
+        return NewCarbEntry(quantity: quantity, startDate: startDate ?? nowDate, foodType: foodType, absorptionTime: absorptionTime, absorptionData: absorptionData)
     }
 }
 

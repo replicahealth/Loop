@@ -1479,12 +1479,14 @@ extension DeviceDataManager {
     //Remote Carb Entry
     
     func handleCarbAction(_ action: CarbAction) async throws {
-        let candidateCarbEntry = try action.toValidCarbEntry(defaultAbsorptionTime: carbStore.defaultAbsorptionTimes.medium,
-                                                                  minAbsorptionTime: LoopConstants.minCarbAbsorptionTime,
-                                                                  maxAbsorptionTime: LoopConstants.maxCarbAbsorptionTime,
-                                                                  maxCarbEntryQuantity: LoopConstants.maxCarbEntryQuantity.doubleValue(for: .gram()),
-                                                                  maxCarbEntryPastTime: LoopConstants.maxCarbEntryPastTime,
-                                                                  maxCarbEntryFutureTime: LoopConstants.maxCarbEntryFutureTime
+        let candidateCarbEntry = try action.toValidCarbEntry(
+            defaultAbsorptionTime: carbStore.defaultAbsorptionTimes.medium,
+            minAbsorptionTime: LoopConstants.minCarbAbsorptionTime,
+            maxAbsorptionTime: LoopConstants.maxCarbAbsorptionTime,
+            maxCarbEntryQuantity: LoopConstants.maxCarbEntryQuantity.doubleValue(for: .gram()),
+            maxCarbEntryPastTime: LoopConstants.maxCarbEntryPastTime,
+            maxCarbEntryFutureTime: LoopConstants.maxCarbEntryFutureTime,
+            absorptionData: nil
         )
         
         let _ = try await addRemoteCarbEntry(candidateCarbEntry)

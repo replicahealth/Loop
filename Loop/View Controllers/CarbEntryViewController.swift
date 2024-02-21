@@ -154,7 +154,8 @@ final class CarbEntryViewController: LoopChartsTableViewController, Identifiable
                 quantity: quantity,
                 startDate: date,
                 foodType: foodType ?? selectedDefaultAbsorptionTimeEmoji,
-                absorptionTime: absorptionTime
+                absorptionTime: absorptionTime,
+                absorptionData: nil
             )
         } else {
             return nil

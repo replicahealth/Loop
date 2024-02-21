@@ -533,7 +533,8 @@ extension LoopAppManager: UNUserNotificationCenterDelegate {
                                                                          doubleValue: carbAmount),
                                                     startDate: mealTime,
                                                     foodType: nil,
-                                                    absorptionTime: nil)
+                                                    absorptionTime: nil,
+                                                    absorptionData: nil)
                 carbActivity.update(from: missedEntry, isMissedMeal: true)
             }
             

@@ -25,9 +25,12 @@ extension CarbStore {
 
         while startDate < endDate {
             for index in 0..<simulatedPerDay {
-                simulated.append(NewCarbEntry.simulated(startDate: startDate.addingTimeInterval(.hours(24) * Double(index) / Double(simulatedPerDay)),
-                                                        grams: Double(20 + 10 * (index % 3)),
-                                                        absorptionTime: .hours(Double(2 + index % 3))))
+                simulated.append(NewCarbEntry.simulated(
+                    startDate: startDate.addingTimeInterval(.hours(24) * Double(index) / Double(simulatedPerDay)),
+                    grams: Double(20 + 10 * (index % 3)),
+                    absorptionTime: .hours(Double(2 + index % 3)),
+                    absorptionData: nil)
+                )
             }
 
             if simulated.count >= simulatedLimit {
@@ -61,11 +64,13 @@ extension CarbStore {
 }
 
 fileprivate extension NewCarbEntry {
-    static func simulated(startDate: Date, grams: Double, absorptionTime: TimeInterval) -> NewCarbEntry {
+    static func simulated(startDate: Date, grams: Double, absorptionTime: TimeInterval, absorptionData: [Int: Double]?) -> NewCarbEntry {
         return NewCarbEntry(date: startDate,
                             quantity: HKQuantity(unit: .gram(), doubleValue: grams),
                             startDate: startDate,
                             foodType: "Simulated",
-                            absorptionTime: absorptionTime)
+                            absorptionTime: absorptionTime,
+                            absorptionData: absorptionData
+            )
     }
 }

@@ -1233,7 +1233,7 @@ extension LoopDataManager {
                     }
 
                     // If the entry is in the past or an entry is replaced, DCA and RC effects must be recomputed
-                    var entries = recentEntries.map { NewCarbEntry(quantity: $0.quantity, startDate: $0.startDate, foodType: nil, absorptionTime: $0.absorptionTime) }
+                    var entries = recentEntries.map { NewCarbEntry(quantity: $0.quantity, startDate: $0.startDate, foodType: nil, absorptionTime: $0.absorptionTime, absorptionData: $0.historicalAbsorptionData) }
                     entries.append(potentialCarbEntry)
                     entries.sort(by: { $0.startDate > $1.startDate })
 
